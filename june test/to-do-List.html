@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do lists</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin-left: 35%;
+    }
+    #container{
+        width: 50%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        justify-content: center;
+        margin-top: 10%;
+        box-shadow: 1px 1px 0px 3px;
+       
+        
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 50%;
+      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: bold;
+    }
+    button {
+      padding: 8px 12px;
+      margin-left: 5px;
+      width: 14vw;
+      margin-top: 10px;
+      background-color: green;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    button:hover{
+    background-color: darkgreen;
+    transform: scale(1.05); 
+    transition: all 0.2s ease;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      width: 62vw;
+    }
+    li {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 50%;
+      font-weight: bold;
+    }
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 20%;
+      font-size: 15px;
+    }
+    .delete-btn:hover{
+      background-color: brown;
+      transform:scale(1.05);
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+
+  <h1>My To-Do List</h1>
+  <input type="text" id="taskInput" placeholder="Add task" />
+  <br>
+  <button onclick="addTask()">Add</button>
+
+  <ul id="taskList"></ul>
+</div>
+
+
+  <script>
+
+    function addTask() {
+const input = document.getElementById("taskInput");
+const taskText = input.value.trim();
+ if (taskText === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = taskText;
+
+      let deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.className = "delete-btn";
+      deleteBtn.onclick = () => li.remove();
+
+      li.appendChild(deleteBtn);
+      document.getElementById("taskList").appendChild(li);
+
+      input.value = "";
+      input.focus();
+    }
+  </script>
+
+</body>
+</html>
